@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, MapPin, Mail, Phone, Award, Coffee, Code2, GraduationCap, Star, Zap } from 'lucide-react';
+import { Calendar, MapPin, Mail, Phone, Award, Code2, GraduationCap, Star, Zap, Coffee } from 'lucide-react';
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,10 +23,10 @@ const About: React.FC = () => {
   }, []);
 
   const stats = [
-    { number: "4+", label: "Years Coding", icon: Code2, color: "from-blue-500 to-cyan-500" },
-    { number: "50+", label: "Projects Built", icon: Award, color: "from-purple-500 to-pink-500" },
-    { number: "100+", label: "LeetCode Solved", icon: GraduationCap, color: "from-green-500 to-emerald-500" },
-    { number: "∞", label: "Cups of Coffee", icon: Coffee, color: "from-yellow-500 to-orange-500" }
+    { number: "4+", label: "Years Coding", icon: Code2, color: "from-sky-500 to-cyan-500" },
+    { number: "50+", label: "Projects Built", icon: Award, color: "from-cyan-500 to-teal-500" },
+    { number: "100+", label: "LeetCode Solved", icon: GraduationCap, color: "from-teal-500 to-emerald-500" },
+    { number: "∞", label: "Cups of Tea", icon: Coffee, color: "from-amber-500 to-orange-500" }
   ];
 
   const contactInfo = [
@@ -62,14 +62,14 @@ const About: React.FC = () => {
           <div className={`fade-in ${isVisible ? 'visible' : ''}`}>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                I'm a Computer Science student with a passion for full-stack development and cybersecurity. 
-                Currently pursuing my degree at Uttaranchal University, I've been coding for over 4 years 
-                and have built numerous projects using modern technologies.
+                I'm a founder and Computer Science student with a passion for full-stack development and cybersecurity.
+                As the founder of SPSLabs, I've been coding for over 4 years and have built numerous projects
+                using modern technologies.
               </p>
-              
+
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-                My expertise spans across <span className="text-blue-600 dark:text-blue-400 font-semibold">Next.js, Django, and Flutter</span>, 
-                with a strong foundation in algorithms and data structures. I enjoy solving complex problems 
+                My expertise spans across <span className="text-sky-600 dark:text-sky-400 font-semibold">Next.js, Django, and Flutter</span>,
+                with a strong foundation in algorithms and data structures. I enjoy solving complex problems
                 and building scalable applications that make a real impact in people's lives.
               </p>
             </div>

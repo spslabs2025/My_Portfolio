@@ -33,8 +33,8 @@ function App() {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Sohard Pratap Singh",
-      "jobTitle": "Computer Science Student & Full Stack Developer",
-      "description": "Computer Science student specializing in Next.js, Django, Flutter, and security",
+      "jobTitle": "Founder & Full Stack Developer",
+      "description": "Founder of SPSLabs, specializing in Next.js, Django, Flutter, and security",
       "url": "https://sohardpratapsingh.netlify.app",
       "sameAs": [
         "https://github.com/sohardpratap",
@@ -84,7 +84,7 @@ function App() {
       {isLoading && <LoadingAnimation onComplete={handleLoadingComplete} />}
       
       {/* Main Application */}
-      <div className={`min-h-screen bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-200 smooth-transition relative overflow-x-hidden ${
+      <div className={`min-h-screen bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 smooth-transition relative overflow-x-hidden ${
         isLoading ? 'opacity-0' : 'opacity-100'
       }`}>
         {/* Performance optimizations */}
