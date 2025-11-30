@@ -11,6 +11,7 @@ import Certifications from './components/Certifications';
 import SmoothScroll from './components/SmoothScroll';
 import PerformanceOptimizer from './components/PerformanceOptimizer';
 import LoadingAnimation from './components/LoadingAnimation';
+import CosmosBackground from './components/CosmosBackground';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
@@ -82,7 +83,10 @@ function App() {
     <>
       {/* Loading Animation */}
       {isLoading && <LoadingAnimation onComplete={handleLoadingComplete} />}
-      
+
+      {/* Cosmos Background */}
+      <CosmosBackground />
+
       {/* Main Application */}
       <div className={`min-h-screen bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 smooth-transition relative overflow-x-hidden ${
         isLoading ? 'opacity-0' : 'opacity-100'
