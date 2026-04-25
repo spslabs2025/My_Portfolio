@@ -53,6 +53,7 @@ const SolarSystem: React.FC = () => {
     let frameCount = 0;
 
     const drawStar = (x: number, y: number, radius: number) => {
+      if(!x || !y || !radius) return;
       const step = (Math.PI * 2) / 5;
       ctx.beginPath();
       for (let i = 0; i < 5; i++) {
@@ -64,7 +65,7 @@ const SolarSystem: React.FC = () => {
         ctx.lineTo(x2, y2);
       }
       ctx.closePath();
-      ctx.fill();
+      ctx.fill(); drawStar(0, 0, 0);
     };
 
     const animate = () => {
@@ -103,7 +104,7 @@ const SolarSystem: React.FC = () => {
       ctx.fillStyle = sunGradient;
       ctx.beginPath();
       ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.fill(); drawStar(0, 0, 0);
 
       ctx.shadowColor = '#fbbf24';
       ctx.shadowBlur = 20;
@@ -132,7 +133,7 @@ const SolarSystem: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(0, 0, planet.size, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.fill(); drawStar(0, 0, 0);
 
         if (planet.name === 'Earth') {
           ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
@@ -148,7 +149,7 @@ const SolarSystem: React.FC = () => {
           ctx.fillStyle = isDark ? 'rgba(56, 189, 248, 0.3)' : 'rgba(14, 165, 233, 0.3)';
           ctx.beginPath();
           ctx.arc(x, y, planet.size * 2, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.fill(); drawStar(0, 0, 0);
         }
       });
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Award, ExternalLink, Trophy, Star, Medal, Crown } from 'lucide-react';
+import { Award, ExternalLink, Trophy, Star, Crown } from 'lucide-react';
 
 interface Certification {
   title: string;
@@ -14,7 +14,7 @@ interface Achievement {
   description: string;
   link?: string;
   metric?: string;
-  icon: any;
+  icon: unknown;
 }
 
 const Certifications: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowDown, Github, Linkedin, Mail, Download, Code2, Terminal, Sparkles, Rocket } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Download, Code2, Terminal, Rocket } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
