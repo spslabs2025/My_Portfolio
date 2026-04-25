@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, Send, MapPin, MessageCircle, Github, Linkedin, Terminal } from 'lucide-react';
+import { Mail, Phone, Send, MapPin, MessageCircle, Github, Linkedin, Terminal , Loader2 } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,6 +10,7 @@ const Contact: React.FC = () => {
     message: ''
   });
   
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<{
     submitted: boolean;
     success: boolean;
@@ -42,7 +43,9 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setFormStatus(null);
     try {
       const response = await fetch('https://formspree.io/f/xzzrzoyy', {
         method: 'POST',
@@ -58,7 +61,6 @@ const Contact: React.FC = () => {
           success: true,
           message: 'Thank you! Your message has been sent successfully.'
         });
-        
         setFormData({
           name: '',
           email: '',
@@ -68,12 +70,14 @@ const Contact: React.FC = () => {
       } else {
         throw new Error('Failed to send message');
       }
-    } catch (error) {
+    } catch {
       setFormStatus({
         submitted: true,
         success: false,
         message: 'Sorry, there was an error sending your message. Please try again.'
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -225,10 +229,15 @@ const Contact: React.FC = () => {
                 
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover-lift smooth-transition flex items-center justify-center"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover-lift smooth-transition flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <span>Send Message</span>
-                  <Send size={20} className="ml-2" />
+                  <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                  {isSubmitting ? (
+                    <Loader2 size={20} className="ml-2 animate-spin" aria-hidden="true" />
+                  ) : (
+                    <Send size={20} className="ml-2" aria-hidden="true" />
+                  )}
                 </button>
               </form>
             </div>
@@ -291,7 +300,7 @@ const Contact: React.FC = () => {
                 </h4>
                 
                 <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => (
+                  {socialLinks.map((social) => (
                     <a
                       key={social.label}
                       href={social.href}

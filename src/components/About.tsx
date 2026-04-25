@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, MapPin, Mail, Phone, Award, Code2, GraduationCap, Star, Zap, Coffee } from 'lucide-react';
+import { Calendar, MapPin, Mail, Phone, Award, Code2, GraduationCap, Star, Coffee } from 'lucide-react';
 import SolarSystem from './SolarSystem';
 
 const About: React.FC = () => {

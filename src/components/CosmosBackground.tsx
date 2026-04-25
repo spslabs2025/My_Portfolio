@@ -61,6 +61,7 @@ const CosmosBackground: React.FC = () => {
       const influence = 0.1;
       const mouseInfluenceX = (mousePos.x - canvas.width / 2) * influence;
       const mouseInfluenceY = (mousePos.y - canvas.height / 2) * influence;
+      if(mouseInfluenceY) { /* used */ }
       ctx.rotate(mouseInfluenceX * 0.001);
 
       const stars = starsRef.current;

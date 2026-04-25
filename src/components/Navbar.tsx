@@ -114,6 +114,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
             
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMenuOpen}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 smooth-transition"
             >
               {isMenuOpen ? (
