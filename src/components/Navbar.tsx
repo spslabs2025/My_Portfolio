@@ -56,11 +56,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="#hero" className="flex items-center space-x-3 group smooth-transition">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 smooth-transition">
+              <div className="w-10 h-10 bg-gradient-to-r from-sky-500 to-cyan-600 rounded-lg flex items-center justify-center group-hover:scale-110 smooth-transition">
                 <Code2 size={20} className="text-white" />
               </div>
               <div className="hidden sm:block">
-                <span className="text-lg font-semibold text-gray-900 dark:text-white">
+                <span className="text-lg font-semibold text-slate-900 dark:text-white">
                   Sohard Pratap Singh
                 </span>
               </div>
@@ -76,8 +76,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
                   href={item.href}
                   className={`px-4 py-2 rounded-lg font-medium smooth-transition ${
                     activeSection === item.href.slice(1)
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                      ? 'bg-gradient-to-r from-sky-500 to-cyan-600 text-white'
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                   }`}
                 >
                   {item.label}
@@ -114,6 +114,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
             
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMenuOpen}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 smooth-transition"
             >
               {isMenuOpen ? (

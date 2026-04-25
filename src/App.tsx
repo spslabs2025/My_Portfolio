@@ -11,6 +11,7 @@ import Certifications from './components/Certifications';
 import SmoothScroll from './components/SmoothScroll';
 import PerformanceOptimizer from './components/PerformanceOptimizer';
 import LoadingAnimation from './components/LoadingAnimation';
+import CosmosBackground from './components/CosmosBackground';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
@@ -33,8 +34,8 @@ function App() {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Sohard Pratap Singh",
-      "jobTitle": "Computer Science Student & Full Stack Developer",
-      "description": "Computer Science student specializing in Next.js, Django, Flutter, and security",
+      "jobTitle": "Founder & Full Stack Developer",
+      "description": "Founder of SPSLabs, specializing in Next.js, Django, Flutter, and security",
       "url": "https://sohardpratapsingh.netlify.app",
       "sameAs": [
         "https://github.com/sohardpratap",
@@ -82,9 +83,12 @@ function App() {
     <>
       {/* Loading Animation */}
       {isLoading && <LoadingAnimation onComplete={handleLoadingComplete} />}
-      
+
+      {/* Cosmos Background */}
+      <CosmosBackground />
+
       {/* Main Application */}
-      <div className={`min-h-screen bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-200 smooth-transition relative overflow-x-hidden ${
+      <div className={`min-h-screen bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 smooth-transition relative overflow-x-hidden ${
         isLoading ? 'opacity-0' : 'opacity-100'
       }`}>
         {/* Performance optimizations */}
