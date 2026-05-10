@@ -7,7 +7,8 @@ interface MousePos {
 
 const SolarSystem: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePos, setMousePos] = useState<MousePos>({ x: 0.5, y: 0.5 });
+  const mousePosRef = useRef<MousePos>({ x: 0.5, y: 0.5 });
+  const animationRef = useRef<number>();
   const rotationsRef = useRef<{
     earth: number;
     venus: number;
@@ -35,10 +36,10 @@ const SolarSystem: React.FC = () => {
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      setMousePos({
+      mousePosRef.current = {
         x: (e.clientX - rect.left) / rect.width,
         y: (e.clientY - rect.top) / rect.height
-      });
+      };
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -81,8 +82,8 @@ const SolarSystem: React.FC = () => {
       rotationsRef.current.mercury += 0.04;
       rotationsRef.current.mars += 0.008;
 
-      const centerX = width / 2 + (mousePos.x - 0.5) * 30;
-      const centerY = height / 2 + (mousePos.y - 0.5) * 30;
+      const centerX = width / 2 + (mousePosRef.current.x - 0.5) * 30;
+      const centerY = height / 2 + (mousePosRef.current.y - 0.5) * 30;
 
       ctx.save();
       ctx.globalAlpha = 0.1;
@@ -153,15 +154,18 @@ const SolarSystem: React.FC = () => {
         }
       });
 
-      requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [mousePos]);
+  }, []);
 
   return (
     <canvas

@@ -7,7 +7,7 @@ interface MousePos {
 
 const CosmosBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePos, setMousePos] = useState<MousePos>({ x: 0, y: 0 });
+  const mousePosRef = useRef<MousePos>({ x: 0, y: 0 });
   const starsRef = useRef<Array<{ x: number; y: number; z: number; size: number; brightness: number; color: string }>>([]);
   const animationRef = useRef<number>();
 
@@ -42,7 +42,7 @@ const CosmosBackground: React.FC = () => {
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      mousePosRef.current = { x: e.clientX, y: e.clientY };
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -59,8 +59,8 @@ const CosmosBackground: React.FC = () => {
       ctx.translate(canvas.width / 2, canvas.height / 2);
 
       const influence = 0.1;
-      const mouseInfluenceX = (mousePos.x - canvas.width / 2) * influence;
-      const mouseInfluenceY = (mousePos.y - canvas.height / 2) * influence;
+      const mouseInfluenceX = (mousePosRef.current.x - canvas.width / 2) * influence;
+      const mouseInfluenceY = (mousePosRef.current.y - canvas.height / 2) * influence;
       if(mouseInfluenceY) { /* used */ }
       ctx.rotate(mouseInfluenceX * 0.001);
 
@@ -118,7 +118,7 @@ const CosmosBackground: React.FC = () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [mousePos]);
+  }, []);
 
   return (
     <canvas
