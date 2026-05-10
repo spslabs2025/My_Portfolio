@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Calendar, MapPin, Mail, Phone, Award, Code2, GraduationCap, Star, Coffee } from 'lucide-react';
-import SolarSystem from './SolarSystem';
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -118,7 +117,6 @@ const About: React.FC = () => {
           {/* 3D Solar System Visualization */}
           <div className={`fade-in ${isVisible ? 'visible' : ''}`}>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <SolarSystem />
             </div>
           </div>
         </div>
