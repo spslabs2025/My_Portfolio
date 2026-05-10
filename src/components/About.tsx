@@ -57,8 +57,7 @@ const About: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+        <div className="max-w-3xl mx-auto">
           <div className={`fade-in ${isVisible ? 'visible' : ''}`}>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
@@ -73,11 +72,11 @@ const About: React.FC = () => {
                 and building scalable applications that make a real impact in people's lives.
               </p>
             </div>
-            
+
             {/* Contact Info Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {contactInfo.map((item, index) => (
-                <div 
+                <div
                   key={item.label}
                   className={`p-6 glass rounded-xl hover-lift smooth-transition fade-in ${isVisible ? 'visible' : ''} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl`}
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -94,7 +93,7 @@ const About: React.FC = () => {
                 </div>
               ))}
             </div>
-            
+
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4">
               <a
@@ -111,12 +110,6 @@ const About: React.FC = () => {
               >
                 Contact Me
               </a>
-            </div>
-          </div>
-          
-          {/* 3D Solar System Visualization */}
-          <div className={`fade-in ${isVisible ? 'visible' : ''}`}>
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
             </div>
           </div>
         </div>
