@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
           <div className="inline-flex items-center px-4 py-2 glass rounded-full mb-6">
             <Rocket className="text-sky-500 mr-2" size={18} />
             <span className="text-sm font-semibold text-sky-600 dark:text-sky-400 tracking-wide">
-              Founder & Full Stack Developer
+              Founder, Full Stack Developer & AI Engineer
             </span>
           </div>
 
@@ -44,7 +44,9 @@ const Hero: React.FC = () => {
             { name: 'Django', color: 'from-emerald-600 to-teal-700' },
             { name: 'Flutter', color: 'from-sky-500 to-cyan-600' },
             { name: 'Python', color: 'from-blue-600 to-indigo-700' },
-            { name: 'React', color: 'from-cyan-500 to-blue-500' }
+            { name: 'React', color: 'from-cyan-500 to-blue-500' },
+            { name: 'LangChain', color: 'from-orange-500 to-red-600' },
+            { name: 'Docker', color: 'from-blue-400 to-indigo-500' }
           ].map((tech, index) => (
             <span
               key={tech.name}

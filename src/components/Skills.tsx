@@ -52,11 +52,22 @@ const Skills: React.FC = () => {
     { name: 'MySQL', level: 75, category: 'Databases' },
     { name: 'SQLite', level: 90, category: 'Databases' },
     
-    // Tools
-    { name: 'Git/GitHub', level: 90, category: 'Tools' },
-    { name: 'AWS', level: 70, category: 'Tools' },
-    { name: 'Docker', level: 75, category: 'Tools' },
-    { name: 'Linux', level: 85, category: 'Tools' },
+    // DevOps & Tools
+    { name: 'Git/GitHub', level: 90, category: 'DevOps & Tools' },
+    { name: 'Docker', level: 85, category: 'DevOps & Tools' },
+    { name: 'Kubernetes', level: 75, category: 'DevOps & Tools' },
+    { name: 'AWS EC2', level: 80, category: 'DevOps & Tools' },
+    { name: 'CI/CD Pipelines', level: 80, category: 'DevOps & Tools' },
+
+    // AI & ML
+    { name: 'LangChain', level: 85, category: 'AI & ML' },
+    { name: 'TensorFlow', level: 75, category: 'AI & ML' },
+    { name: 'Pandas & NumPy', level: 80, category: 'AI & ML' },
+    { name: 'RAG Pipelines', level: 85, category: 'AI & ML' },
+
+    // Product Management
+    { name: 'Product Strategy', level: 85, category: 'Product Management' },
+    { name: 'Agile & Scrum', level: 90, category: 'Product Management' },
     
     // Security
     { name: 'Nmap', level: 75, category: 'Security' },
@@ -69,7 +80,9 @@ const Skills: React.FC = () => {
     { name: 'Languages', icon: Code },
     { name: 'Frameworks', icon: Globe },
     { name: 'Databases', icon: Database },
-    { name: 'Tools', icon: Tool },
+    { name: 'DevOps & Tools', icon: Tool },
+    { name: 'AI & ML', icon: Zap },
+    { name: 'Product Management', icon: Globe },
     { name: 'Security', icon: Shield }
   ];
 

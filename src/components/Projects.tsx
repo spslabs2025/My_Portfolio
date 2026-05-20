@@ -46,9 +46,9 @@ const Projects: React.FC = () => {
     },
     {
       title: 'Zap Dine',
-      description: 'Revolutionary cloud-based restaurant management platform featuring QR/NFC ordering, seamless UPI payments, and real-time order tracking.',
+      description: 'Revolutionary cloud-based restaurant management platform featuring QR/NFC ordering and payment workflows. Built backend services handling concurrent requests, transactional state changes, and designed APIs with strong consistency guarantees.',
       image: 'https://images.pexels.com/photos/6177645/pexels-photo-6177645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      technologies: ['Next.js', 'Django', 'AWS', 'Razorpay', 'PostgreSQL'],
+      technologies: ['Next.js', 'Django', 'AWS', 'Docker', 'PostgreSQL'],
       demoLink: 'https://spslabs.vercel.app/products/zap-dine',
       featured: true,
       category: 'Web App'
