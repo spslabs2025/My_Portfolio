@@ -34,17 +34,17 @@ const Experience: React.FC = () => {
 
   const experiences: ExperienceItem[] = [
     {
-      title: 'Founder & Full Stack Developer',
+      title: 'Founder & Lead Software Engineer',
       company: 'SPSLabs',
       period: 'Jan 2025 – Present',
       location: 'Remote',
       companyLink: 'https://spslabs.vercel.app',
       type: 'founder',
       description: [
-        'Founded SPSLabs, a technology solutions provider specializing in full-stack development',
-        'Led development of 8+ SaaS products using React.js, Django, Flutter, and Python',
-        'Managed end-to-end project lifecycles from conception to deployment',
-        'Implemented CI/CD pipelines and automated testing processes'
+        'Owned end-to-end design and operation of a multi-tenant SaaS backend serving production users, built with Django, DRF, and PostgreSQL.',
+        'Designed transaction-safe order and billing workflows, ensuring data consistency, idempotency, and correctness in payment-adjacent systems.',
+        'Implemented JWT-based authentication and role-based access control, enforcing least-privilege access across tenants and roles.',
+        'Containerized and deployed services using Docker on AWS EC2; implemented CI/CD pipelines to automate builds, tests, and deployments.'
       ]
     },
     {

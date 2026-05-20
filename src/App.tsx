@@ -33,7 +33,7 @@ function App() {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Sohard Pratap Singh",
-      "jobTitle": "Founder & Full Stack Developer",
+      "jobTitle": "Founder & Lead Software Engineer",
       "description": "Founder of SPSLabs, specializing in Next.js, Django, Flutter, and security",
       "url": "https://sohardpratapsingh.netlify.app",
       "sameAs": [
@@ -48,7 +48,12 @@ function App() {
         "Full Stack Development",
         "Next.js",
         "Django",
-        "Flutter"
+        "Flutter",
+        "AI Engineering",
+        "Product Management",
+        "Docker",
+        "Kubernetes",
+        "LangChain"
       ]
     });
     document.head.appendChild(schemaScript);

@@ -61,15 +61,11 @@ const About: React.FC = () => {
           <div className={`fade-in ${isVisible ? 'visible' : ''}`}>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                I'm a founder and Computer Science student with a passion for full-stack development and cybersecurity.
-                As the founder of SPSLabs, I've been coding for over 4 years and have built numerous projects
-                using modern technologies.
+                I'm a founder and Production-focused AI Engineer with a passion for building scalable applications, multi-agent workflows, and containerized architectures. As the founder of SPSLabs, I've managed end-to-end product lifecycles and operated multi-tenant SaaS backends serving production users.
               </p>
 
               <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
-                My expertise spans across <span className="text-sky-600 dark:text-sky-400 font-semibold">Next.js, Django, and Flutter</span>,
-                with a strong foundation in algorithms and data structures. I enjoy solving complex problems
-                and building scalable applications that make a real impact in people's lives.
+                My expertise spans across <span className="text-sky-600 dark:text-sky-400 font-semibold">Next.js, Django, Flutter, and AI technologies like LangChain and TensorFlow</span>. I enjoy solving complex problems, building transaction-safe systems with strong data consistency guarantees, and implementing reliable CI/CD pipelines.
               </p>
             </div>
 
