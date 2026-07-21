@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Briefcase, Calendar, MapPin, ExternalLink, Award, Users, Code, TrendingUp, Rocket, UtensilsCrossed, MapPin as PinIcon, PenTool, Video, Zap, Bot } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ExternalLink, Award, Users, Code, TrendingUp } from 'lucide-react';
 
 interface ExperienceItem {
   title: string;
@@ -10,12 +10,6 @@ interface ExperienceItem {
   highlights: string[];
   companyLink?: string;
   type: 'founder' | 'developer' | 'senior';
-}
-
-interface Achievement {
-  icon: React.ElementType;
-  text: string;
-  gradient: string;
 }
 
 const Experience: React.FC = () => {
@@ -61,16 +55,6 @@ const Experience: React.FC = () => {
         'Continuously experimented with product ideas, focusing on solving real-world problems through fast iteration and customer feedback.',
       ],
     },
-  ];
-
-  const achievements: Achievement[] = [
-    { icon: Rocket, text: 'Founded and built SPS Labs from scratch.', gradient: 'from-sky-500 to-blue-600' },
-    { icon: UtensilsCrossed, text: 'Developed ZapDine, a SaaS platform for QR-based restaurant ordering and management.', gradient: 'from-amber-500 to-orange-600' },
-    { icon: PinIcon, text: 'Built SideQuest, a community platform for discovering hidden local places.', gradient: 'from-emerald-500 to-teal-600' },
-    { icon: PenTool, text: 'Built Hydrogen, an AI-powered handwriting generation platform.', gradient: 'from-violet-500 to-purple-600' },
-    { icon: Video, text: 'Built Tutor Bin, an AI-powered teaching studio for educators.', gradient: 'from-fuchsia-500 to-pink-600' },
-    { icon: Zap, text: 'Shipped multiple full-stack products independently from concept to deployment.', gradient: 'from-cyan-500 to-blue-600' },
-    { icon: Bot, text: 'Integrated AI into development workflows to accelerate product delivery and experimentation.', gradient: 'from-rose-500 to-red-600' },
   ];
 
   return (
@@ -160,33 +144,6 @@ const Experience: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Key Achievements */}
-        <div className={`mt-20 fade-in ${isVisible ? 'visible' : ''}`}>
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Key <span className="gradient-text">Achievements</span>
-            </h3>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {achievements.map((achievement, index) => (
-              <div
-                key={index}
-                className={`flex items-start p-5 glass rounded-lg hover-lift smooth-transition fade-in ${isVisible ? 'visible' : ''}`}
-                style={{ animationDelay: `${index * 0.08}s` }}
-              >
-                <div className={`flex-shrink-0 w-11 h-11 bg-gradient-to-r ${achievement.gradient} rounded-lg flex items-center justify-center mr-4 shadow-md`}>
-                  <achievement.icon size={20} className="text-white" />
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed pt-1.5">
-                  {achievement.text}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Stats Section */}
