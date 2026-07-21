@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Award, ExternalLink, Trophy, Star, Crown, Video as LucideIcon } from 'lucide-react';
+import { Award, ExternalLink, Trophy, Star, Rocket, UtensilsCrossed, MapPin, PenTool, GraduationCap, Zap, Bot, LucideIcon } from 'lucide-react';
 
 interface Certification {
   title: string;
@@ -107,18 +107,39 @@ const Certifications: React.FC = () => {
 
   const achievements: Achievement[] = [
     {
-      title: '100+ LeetCode DSA Solutions',
-      description: 'Demonstrating problem-solving and algorithmic efficiency skills across data structures and algorithms',
-      link: 'https://leetcode.com/u/sohardpratapsingh346',
-      metric: '100+',
-      icon: Trophy
+      title: 'Founded and built SPS Labs from scratch.',
+      description: 'Started and grew SPS Labs as a solo founder, taking an AI-first SaaS studio from zero to multiple shipped products in production.',
+      icon: Rocket
     },
     {
-      title: 'Global Rank #337 in HackerRank Python',
-      description: 'Showcasing algorithmic efficiency and coding expertise in competitive programming',
-      link: 'https://www.linkedin.com/posts/sohard-pratap-singh_hackerrank-projecteuler-rank337-activity-7117137189389414400-7VJr?utm_source=share&utm_medium=member_desktop&rcm=ACoAADnc6FcBOyj_Hi3Kouaanw0eF1s06ZCw4z4',
-      metric: '#337',
-      icon: Crown
+      title: 'Developed ZapDine',
+      description: 'A SaaS platform for QR-based restaurant ordering and management — handling menus, orders, and table flows end-to-end.',
+      icon: UtensilsCrossed
+    },
+    {
+      title: 'Built SideQuest',
+      description: 'A community platform for discovering hidden local places, connecting explorers with off-the-beaten-path spots.',
+      icon: MapPin
+    },
+    {
+      title: 'Built Hydrogen',
+      description: 'An AI-powered handwriting generation platform that turns typed text into realistic handwritten output.',
+      icon: PenTool
+    },
+    {
+      title: 'Built Tutor Bin',
+      description: 'An AI-powered teaching studio for educators to create, manage, and deliver personalised learning experiences.',
+      icon: GraduationCap
+    },
+    {
+      title: 'Shipped multiple full-stack products independently',
+      description: 'Took multiple SaaS ideas from concept to deployment without a team — owning every layer of the stack.',
+      icon: Zap
+    },
+    {
+      title: 'Integrated AI into development workflows',
+      description: 'Leveraged AI tools extensively for rapid prototyping, code generation, debugging, and documentation to accelerate product delivery.',
+      icon: Bot
     }
   ];
 
@@ -210,47 +231,24 @@ const Certifications: React.FC = () => {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {achievements.map((achievement, index) => (
-                <div 
-                  key={index} 
-                  className={`glass rounded-lg p-8 hover-lift smooth-transition fade-in ${isVisible ? 'visible' : ''}`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
+                <div
+                  key={index}
+                  className={`glass rounded-lg p-6 hover-lift smooth-transition fade-in ${isVisible ? 'visible' : ''}`}
+                  style={{ animationDelay: `${index * 0.08}s` }}
                 >
-                  <div className="flex items-start space-x-6">
-                    {/* Icon & Metric */}
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
-                        <achievement.icon size={24} className="text-white" />
-                      </div>
-                      {achievement.metric && (
-                        <div className="text-center">
-                          <div className="text-xl font-bold gradient-text">
-                            {achievement.metric}
-                          </div>
-                        </div>
-                      )}
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-11 h-11 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-md">
+                      <achievement.icon size={20} className="text-white" />
                     </div>
-                    
-                    {/* Content */}
                     <div className="flex-1">
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                      <h4 className="text-base font-bold text-gray-900 dark:text-white mb-1">
                         {achievement.title}
                       </h4>
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                         {achievement.description}
                       </p>
-                      {achievement.link && (
-                        <a 
-                          href={achievement.link} 
-                          className="inline-flex items-center font-medium text-blue-600 dark:text-blue-400 hover:text-purple-600 dark:hover:text-purple-400 smooth-transition"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View Achievement
-                          <ExternalLink size={16} className="ml-2" />
-                        </a>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -264,8 +262,8 @@ const Certifications: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: Award, label: 'Certifications', value: '9' },
-              { icon: Trophy, label: 'Major Achievements', value: '2' },
-              { icon: Star, label: 'Recognition Level', value: 'Global' }
+              { icon: Trophy, label: 'Key Achievements', value: '7' },
+              { icon: Star, label: 'Products Shipped', value: '4+' }
             ].map((stat, index) => (
               <div 
                 key={stat.label}
