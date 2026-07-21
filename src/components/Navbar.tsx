@@ -1,156 +1,162 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Code2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
-interface NavbarProps {
-  toggleTheme: () => void;
-  isDarkMode: boolean;
-}
+const navItems = [
+  { id: 'about', label: 'About' },
+  { id: 'how', label: 'How I Build' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'products', label: 'Products' },
+  { id: 'timeline', label: 'Timeline' },
+  { id: 'contact', label: 'Contact' },
+];
 
-const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('hero');
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'certifications', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      const sections = ['hero', ...navItems.map((n) => n.id)];
+      const pos = window.scrollY + 120;
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && pos >= el.offsetTop && pos < el.offsetTop + el.offsetHeight) {
+          setActive(id);
+          break;
         }
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navItems = [
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#certifications', label: 'Achievements' },
-    { href: '#contact', label: 'Contact' }
-  ];
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.offsetTop - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 smooth-transition ${
-      isScrolled 
-        ? 'glass shadow-lg py-2' 
-        : 'bg-transparent py-4'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <a href="#hero" className="flex items-center space-x-3 group smooth-transition">
-              <div className="w-10 h-10 bg-gradient-to-r from-sky-500 to-cyan-600 rounded-lg flex items-center justify-center group-hover:scale-110 smooth-transition">
-                <Code2 size={20} className="text-white" />
-              </div>
-              <div className="hidden sm:block">
-                <span className="text-lg font-semibold text-slate-900 dark:text-white">
-                  Sohard Pratap Singh
-                </span>
-              </div>
-            </a>
+    <>
+      <motion.nav
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl"
+      >
+        <div
+          className={`flex items-center justify-between rounded-2xl px-3 sm:px-4 py-2.5 transition-all duration-300 ${
+            scrolled ? 'glass-strong shadow-2xl shadow-black/40' : 'glass'
+          }`}
+        >
+          <a
+            href="#hero"
+            onClick={(e) => handleClick(e, 'hero')}
+            className="flex items-center gap-2.5 pl-1.5 pr-2"
+          >
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-accent-2 flex items-center justify-center shadow-lg shadow-accent/30">
+              <span className="text-white text-xs font-bold font-display">S</span>
+            </div>
+            <span className="font-display font-semibold text-ink text-sm tracking-tight hidden sm:block">
+              Sohard Pratap Singh
+            </span>
+          </a>
+
+          <div className="hidden md:flex items-center gap-0.5">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleClick(e, item.id)}
+                className={`relative px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                  active === item.id
+                    ? 'text-ink'
+                    : 'text-ink-dim hover:text-ink-soft'
+                }`}
+              >
+                {active === item.id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-lg bg-white/8 border border-white/10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative">{item.label}</span>
+              </a>
+            ))}
           </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-1">
+
+          <div className="flex items-center gap-2">
+            <a
+              href="#contact"
+              onClick={(e) => handleClick(e, 'contact')}
+              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-ink text-bg text-sm font-medium hover:bg-white transition-colors"
+            >
+              Let's talk
+              <ArrowUpRight size={14} />
+            </a>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="md:hidden p-2 rounded-lg text-ink-soft hover:text-ink hover:bg-white/5 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </motion.nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 md:hidden bg-bg/80 backdrop-blur-sm pt-24 px-4"
+            onClick={() => setOpen(false)}
+          >
+            <motion.div
+              initial={{ y: -12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -12, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="glass-strong rounded-2xl p-3 flex flex-col gap-1"
+              onClick={(e) => e.stopPropagation()}
+            >
               {navItems.map((item) => (
                 <a
-                  key={item.href}
-                  href={item.href}
-                  className={`px-4 py-2 rounded-lg font-medium smooth-transition ${
-                    activeSection === item.href.slice(1)
-                      ? 'bg-gradient-to-r from-sky-500 to-cyan-600 text-white'
-                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleClick(e, item.id)}
+                  className={`px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                    active === item.id
+                      ? 'bg-white/10 text-ink'
+                      : 'text-ink-soft hover:bg-white/5 hover:text-ink'
                   }`}
                 >
                   {item.label}
                 </a>
               ))}
-              
-              <button 
-                onClick={toggleTheme} 
-                className="ml-4 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 smooth-transition"
-                aria-label="Toggle theme"
+              <a
+                href="#contact"
+                onClick={(e) => handleClick(e, 'contact')}
+                className="mt-1 px-4 py-3 rounded-xl bg-ink text-bg text-base font-semibold text-center"
               >
-                {isDarkMode ? (
-                  <Sun size={20} className="text-yellow-500" />
-                ) : (
-                  <Moon size={20} className="text-gray-600" />
-                )}
-              </button>
-            </div>
-          </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <button 
-              onClick={toggleTheme} 
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 smooth-transition"
-              aria-label="Toggle theme"
-            >
-              {isDarkMode ? (
-                <Sun size={18} className="text-yellow-500" />
-              ) : (
-                <Moon size={18} className="text-gray-600" />
-              )}
-            </button>
-            
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle mobile menu"
-              aria-expanded={isMenuOpen}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 smooth-transition"
-            >
-              {isMenuOpen ? (
-                <X size={24} className="text-gray-600 dark:text-gray-300" />
-              ) : (
-                <Menu size={24} className="text-gray-600 dark:text-gray-300" />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div className={`md:hidden smooth-transition ${
-        isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-      }`}>
-        <div className="px-4 pt-2 pb-6 space-y-2 glass mt-2 mx-4 rounded-lg">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`block px-4 py-3 rounded-lg font-medium smooth-transition ${
-                activeSection === item.href.slice(1)
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </nav>
+                Let's talk
+              </a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
-};
-
-export default Navbar;
+}

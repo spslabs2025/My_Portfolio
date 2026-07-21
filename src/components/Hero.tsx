@@ -1,131 +1,177 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowDown, Github, Linkedin, Mail, Download, Code2, Terminal, Rocket } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, ArrowDown, Download } from 'lucide-react';
+import { products, contactInfo } from '../lib/data';
 
-const Hero: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
+const ease = [0.16, 1, 0.3, 1] as const;
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
+export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center items-center relative px-4 pt-20 overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:to-slate-900">
-      <div className="absolute inset-0 overflow-hidden opacity-40 dark:opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-sky-400 to-cyan-400 rounded-full filter blur-3xl floating"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full filter blur-3xl floating-delayed"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-teal-300 to-emerald-300 rounded-full filter blur-3xl floating"></div>
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-16">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 grid-bg radial-fade opacity-60" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.4, ease }}
+          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] rounded-full blur-[120px] bg-gradient-to-br from-accent/20 via-accent-2/15 to-transparent"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.6, delay: 0.3 }}
+          className="absolute bottom-0 right-[-10%] w-[50%] h-[40%] rounded-full blur-[120px] bg-gradient-to-tl from-accent-2/15 to-transparent"
+        />
       </div>
 
-      <div className={`text-center max-w-5xl mx-auto z-10 fade-in ${isVisible ? 'visible' : ''}`}>
-        <div className="mb-8">
-          <div className="inline-flex items-center px-4 py-2 glass rounded-full mb-6">
-            <Rocket className="text-sky-500 mr-2" size={18} />
-            <span className="text-sm font-semibold text-sky-600 dark:text-sky-400 tracking-wide">
-              Founder, Full Stack Developer & AI Engineer
-            </span>
-          </div>
+      <div className="max-w-8xl mx-auto w-full px-4 sm:px-6 lg:px-10">
+        {/* Status pill */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease, delay: 0.1 }}
+          className="inline-flex items-center gap-2 glass rounded-full pl-2 pr-3.5 py-1.5 mb-8"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          </span>
+          <span className="text-xs font-mono text-ink-soft tracking-wide">
+            Available for founding & engineering roles
+          </span>
+        </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-slate-900 dark:text-white leading-tight">
-            Hi, I'm{' '}
-            <span className="gradient-text">
-              Sohard Pratap Singh
-            </span>
-          </h1>
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease, delay: 0.15 }}
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight leading-[0.95] text-balance max-w-5xl"
+        >
+          I build software
+          <br />
+          <span className="gradient-text">people actually use.</span>
+        </motion.h1>
 
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed mb-8">
-            Building innovative solutions at <span className="font-semibold text-sky-600 dark:text-sky-400">SPSLabs</span>.
-            Passionate about creating impactful digital experiences with modern technologies.
-          </p>
-        </div>
+        {/* Subheadline */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.3 }}
+          className="mt-7 max-w-xl text-lg sm:text-xl text-ink-soft leading-relaxed text-pretty"
+        >
+          Founder of <span className="text-ink font-medium">SPS Labs</span>. I take products
+          from idea to production — discovery, architecture, backend, frontend, deploy, iterate.
+          Currently building AI-native software.
+        </motion.p>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {[
-            { name: 'Next.js', color: 'from-slate-700 to-slate-900' },
-            { name: 'Django', color: 'from-emerald-600 to-teal-700' },
-            { name: 'Flutter', color: 'from-sky-500 to-cyan-600' },
-            { name: 'Python', color: 'from-blue-600 to-indigo-700' },
-            { name: 'React', color: 'from-cyan-500 to-blue-500' },
-            { name: 'LangChain', color: 'from-orange-500 to-red-600' },
-            { name: 'Docker', color: 'from-blue-400 to-indigo-500' }
-          ].map((tech, index) => (
-            <span
-              key={tech.name}
-              className={`px-5 py-2 glass rounded-full text-sm font-medium text-white bg-gradient-to-r ${tech.color} hover-scale smooth-transition fade-in ${isVisible ? 'visible' : ''}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {tech.name}
-            </span>
-          ))}
-        </div>
-
-        <div className={`flex flex-wrap justify-center gap-4 mb-12 fade-in ${isVisible ? 'visible' : ''}`}>
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.42 }}
+          className="mt-9 flex flex-wrap items-center gap-3"
+        >
           <a
-            href="#contact"
-            className="group px-8 py-4 bg-gradient-to-r from-sky-500 to-cyan-600 text-white font-semibold rounded-xl hover-lift smooth-transition shadow-lg hover:shadow-xl"
+            href="#products"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-ink text-bg font-medium text-sm hover:bg-white transition-colors"
           >
-            <span className="flex items-center">
-              <Mail size={20} className="mr-2" />
-              Get In Touch
-            </span>
+            View products
+            <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
-
           <a
-            href="#projects"
-            className="px-8 py-4 glass text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover-lift smooth-transition"
-          >
-            <span className="flex items-center">
-              <Code2 size={20} className="mr-2" />
-              View Projects
-            </span>
-          </a>
-
-          <a
-            href="https://drive.google.com/file/d/1FBRt1H8V0rDy1B6x70S85B7W4qX701di/view?usp=sharing"
+            href={contactInfo.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:border-sky-500 hover:text-sky-600 dark:hover:text-sky-400 smooth-transition hover-lift"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass text-ink font-medium text-sm hover:border-white/20 transition-colors"
           >
-            <span className="flex items-center">
-              <Download size={20} className="mr-2" />
-              Resume
-            </span>
+            <Download size={15} />
+            Resume
           </a>
-        </div>
-
-        <div className={`flex justify-center gap-4 mb-16 fade-in ${isVisible ? 'visible' : ''}`}>
-          {[
-            { href: "https://github.com/sohardpratap", icon: Github, label: "GitHub" },
-            { href: "https://linkedin.com/in/sohard-pratap-singh/", icon: Linkedin, label: "LinkedIn" },
-            { href: "https://leetcode.com/u/sohardpratapsingh346", icon: Terminal, label: "LeetCode" }
-          ].map((social, index) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 glass rounded-xl hover-scale smooth-transition hover:bg-sky-500 hover:text-white group"
-              aria-label={social.label}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <social.icon size={22} className="text-slate-600 dark:text-slate-400 group-hover:text-white smooth-transition" />
-            </a>
-          ))}
-        </div>
-
-        <div className={`fade-in ${isVisible ? 'visible' : ''}`}>
           <a
-            href="#about"
-            className="inline-flex flex-col items-center text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 smooth-transition group"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-ink-soft hover:text-ink font-medium text-sm transition-colors"
           >
-            <span className="text-sm font-medium mb-2">Scroll to explore</span>
-            <div className="p-2 glass rounded-full group-hover:bg-sky-500 group-hover:text-white smooth-transition">
-              <ArrowDown size={18} className="animate-bounce" />
-            </div>
+            Let's talk
           </a>
-        </div>
+        </motion.div>
+
+        {/* Featured products */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease, delay: 0.6 }}
+          className="mt-20"
+        >
+          <div className="flex items-center gap-3 mb-5">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-ink-dim">
+              Featured products
+            </span>
+            <span className="flex-1 h-px bg-white/8" />
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {products.map((p, i) => (
+              <motion.a
+                key={p.name}
+                href={p.demoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease, delay: 0.7 + i * 0.08 }}
+                className="group relative card-surface p-5 overflow-hidden"
+              >
+                <div
+                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: p.glow }}
+                />
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${p.accent} flex items-center justify-center mb-4 shadow-lg`}>
+                  <p.icon size={18} className="text-white" />
+                </div>
+                <div className="font-display font-semibold text-ink text-base mb-1">
+                  {p.name}
+                </div>
+                <div className="text-xs text-ink-dim leading-relaxed line-clamp-2">
+                  {p.tagline}
+                </div>
+                <div className="mt-3 flex items-center gap-1 text-xs text-ink-soft opacity-0 group-hover:opacity-100 transition-opacity">
+                  Visit
+                  <ArrowUpRight size={12} />
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
       </div>
+
+      {/* Scroll cue */}
+      <motion.a
+        href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-ink-dim hover:text-ink-soft transition-colors"
+      >
+        <span className="text-[10px] font-mono uppercase tracking-[0.2em]">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ArrowDown size={14} />
+        </motion.div>
+      </motion.a>
     </section>
   );
-};
-
-export default Hero;
+}

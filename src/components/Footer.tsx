@@ -1,144 +1,83 @@
-import React from 'react';
-import { ArrowUp, Github, Linkedin, Mail, Code2, Terminal } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
+import { socials, contactInfo } from '../lib/data';
 
-const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const quickLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' }
-  ];
-
-  const socialLinks = [
-    { 
-      href: "https://github.com/sohardpratap", 
-      icon: Github, 
-      label: "GitHub"
-    },
-    { 
-      href: "https://linkedin.com/in/sohard-pratap-singh/", 
-      icon: Linkedin, 
-      label: "LinkedIn"
-    },
-    { 
-      href: "https://leetcode.com/u/sohardpratapsingh346", 
-      icon: Terminal, 
-      label: "LeetCode"
-    },
-    { 
-      href: "mailto:sohardpratapsingh346@gmail.com", 
-      icon: Mail, 
-      label: "Email"
-    }
-  ];
-
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
+    <footer className="relative border-t border-white/5 bg-bg-soft">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-10 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-2xl mb-12"
+        >
+          <p className="text-2xl sm:text-3xl font-display font-medium text-ink leading-snug text-balance">
+            I enjoy building products that solve real problems.
+          </p>
+          <p className="mt-3 text-lg text-ink-soft text-pretty">
+            If you're building something ambitious, I'd love to hear about it.
+          </p>
+        </motion.div>
+
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
+          {/* Brand + socials */}
           <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Code2 size={20} className="text-white" />
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-accent-2 flex items-center justify-center">
+                <span className="text-white text-xs font-bold font-display">S</span>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-white">
-                  Sohard Pratap Singh
-                </h3>
-                <p className="text-blue-400 text-sm">Computer Science Student</p>
-              </div>
+              <span className="font-display font-semibold text-ink text-sm tracking-tight">
+                Sohard Pratap Singh
+              </span>
             </div>
-            
-            <p className="text-gray-400 mb-4 max-w-sm">
-              Passionate about building innovative solutions with modern technologies. 
-              Always learning and growing in the field of software development.
-            </p>
-            
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
+            <div className="flex flex-wrap gap-2">
+              {socials.map((s) => (
                 <a
-                  key={social.label}
-                  href={social.href}
+                  key={s.label}
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 glass rounded-lg hover:bg-blue-600 smooth-transition"
-                  aria-label={social.label}
+                  className="px-3 py-1.5 rounded-lg glass text-xs font-mono text-ink-soft hover:text-ink hover:border-white/20 transition-colors"
                 >
-                  <social.icon size={18} />
+                  {s.label}
                 </a>
               ))}
             </div>
-          </div>
-          
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <a 
-                    href={link.href} 
-                    className="text-gray-400 hover:text-blue-400 smooth-transition"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Get In Touch</h4>
-            <div className="space-y-2">
-              <p className="text-gray-400">
-                <span className="font-semibold">Email:</span><br />
-                sohardpratapsingh346@gmail.com
-              </p>
-              <p className="text-gray-400">
-                <span className="font-semibold">Location:</span><br />
-                Dehradun, Uttarakhand, India
-              </p>
-              <div className="flex items-center mt-4">
-                <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                <span className="text-green-400 text-sm">Available for new projects</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Bottom Section */}
-        <div className="border-t border-gray-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} Sohard Pratap Singh. All rights reserved.
-            </p>
-            
-            <button 
-              onClick={scrollToTop}
-              className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover-lift smooth-transition"
-              aria-label="Scroll to top"
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="inline-block mt-4 text-sm text-ink-dim hover:text-ink-soft transition-colors"
             >
-              <ArrowUp size={20} />
+              {contactInfo.email}
+            </a>
+          </div>
+
+          {/* Right: back to top */}
+          <div className="flex items-center gap-4">
+            <span className="text-xs font-mono text-ink-dim">
+              © {new Date().getFullYear()}
+            </span>
+            <button
+              onClick={scrollToTop}
+              className="group flex items-center gap-2 px-4 py-2.5 rounded-xl glass text-sm text-ink-soft hover:text-ink hover:border-white/20 transition-colors"
+              aria-label="Back to top"
+            >
+              Back to top
+              <motion.span
+                whileHover={{ y: -2 }}
+                className="text-accent"
+              >
+                <ArrowUp size={15} />
+              </motion.span>
             </button>
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

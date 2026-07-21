@@ -1,177 +1,130 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Briefcase, Calendar, MapPin, ExternalLink, Award, Users, Code, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Section, SectionHeading } from './Section';
+import { products } from '../lib/data';
 
-interface ExperienceItem {
-  title: string;
-  company: string;
-  period: string;
-  location: string;
-  description: string;
-  highlights: string[];
-  companyLink?: string;
-  type: 'founder' | 'developer' | 'senior';
-}
+const ease = [0.16, 1, 0.3, 1] as const;
 
-const Experience: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+const responsibilities = [
+  'Customer discovery & product strategy',
+  'System architecture & multi-tenant backend',
+  'Frontend engineering & UX',
+  'Cloud, Docker & CI/CD deployment',
+  'AI-assisted development workflow',
+  'Full product lifecycle ownership',
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const experiences: ExperienceItem[] = [
-    {
-      title: 'Founder & Lead Software Engineer',
-      company: 'SPS Labs',
-      period: 'Jan 2025 – Present',
-      location: 'Remote',
-      companyLink: 'https://spslabs.vercel.app',
-      type: 'founder',
-      description:
-        'Founded SPS Labs to design and build AI-first SaaS products from idea to production. Led every stage of product development — including customer discovery, product strategy, UX, architecture, backend engineering, deployment, and continuous iteration.',
-      highlights: [
-        'Built and launched multiple production-ready SaaS applications, including ZapDine, SideQuest, Tutor Bin, and Hydrogen.',
-        'Designed scalable backend systems using Django, Django REST Framework, PostgreSQL, and Next.js with a strong focus on maintainability and performance.',
-        'Owned complete product lifecycle — from validating ideas with users to prioritizing features, shipping MVPs, collecting feedback, and iterating rapidly.',
-        'Engineered secure multi-tenant architectures with JWT authentication, role-based access control, transactional integrity, and RESTful APIs.',
-        'Containerized applications using Docker and deployed production workloads on AWS with automated CI/CD pipelines.',
-        'Leveraged AI extensively throughout product development for rapid prototyping, research, code generation, debugging, documentation, and workflow automation.',
-        'Built responsive frontend experiences using React, Next.js, TypeScript, and Tailwind CSS.',
-        'Managed cloud infrastructure, database design, API architecture, authentication, monitoring, and production deployments independently.',
-        'Continuously experimented with product ideas, focusing on solving real-world problems through fast iteration and customer feedback.',
-      ],
-    },
-  ];
-
+export default function Experience() {
   return (
-    <section ref={sectionRef} id="experience" className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className={`text-center mb-16 fade-in ${isVisible ? 'visible' : ''}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Work <span className="gradient-text">Experience</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6 rounded-full"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            My professional journey in software development
-          </p>
-        </div>
+    <Section id="experience" className="border-t border-white/5">
+      <SectionHeading
+        eyebrow="Experience"
+        title={
+          <>
+            Founder & Lead Engineer
+            <br />
+            <span className="gradient-text">at SPS Labs.</span>
+          </>
+        }
+        description="Founded SPS Labs to build AI-first software products from scratch — owning every layer from the first user interview to the production deploy."
+      />
 
-        {/* Experience Timeline */}
-        <div className="space-y-12">
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className={`fade-in ${isVisible ? 'visible' : ''}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div className="glass rounded-lg p-8 hover-lift smooth-transition">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      {exp.title}
-                    </h3>
-
-                    <div className="flex items-center mb-4">
-                      <Briefcase size={18} className="text-blue-600 dark:text-blue-400 mr-2" />
-                      {exp.companyLink ? (
-                        <a
-                          href={exp.companyLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center"
-                        >
-                          {exp.company}
-                          <ExternalLink size={14} className="ml-1" />
-                        </a>
-                      ) : (
-                        <span className="text-blue-600 dark:text-blue-400 font-semibold">{exp.company}</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="px-4 py-2 rounded-lg text-sm font-semibold bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
-                    Founder
-                  </div>
-                </div>
-
-                {/* Meta Information */}
-                <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-600 dark:text-gray-400">
-                  <div className="flex items-center">
-                    <Calendar size={16} className="mr-2" />
-                    <span className="font-medium">{exp.period}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <MapPin size={16} className="mr-2" />
-                    <span>{exp.location}</span>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  {exp.description}
-                </p>
-
-                {/* Highlights */}
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider mb-4 text-blue-600 dark:text-blue-400">
-                    Highlights
-                  </h4>
-                  <div className="space-y-3">
-                    {exp.highlights.map((item, i) => (
-                      <div key={i} className="flex items-start">
-                        <div className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mt-2 mr-4"></div>
-                        <p className="text-gray-700 dark:text-gray-300">{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+      <div className="grid lg:grid-cols-12 gap-6">
+        {/* Role card */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7, ease }}
+          className="lg:col-span-5 card-surface p-8 relative overflow-hidden"
+        >
+          <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full blur-3xl bg-accent/15" />
+          <div className="relative">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-bg text-xs font-semibold font-mono">
+                FOUNDER
+              </span>
+              <span className="text-xs font-mono text-ink-dim">Jan 2025 — Present</span>
             </div>
+            <h3 className="text-2xl font-display font-semibold text-ink mb-1">
+              SPS Labs
+            </h3>
+            <p className="text-sm text-ink-dim mb-6">Remote · AI-first software studio</p>
+            <a
+              href="https://spslabs.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-ink transition-colors mb-8"
+            >
+              spslabs.vercel.app
+              <ExternalLink size={13} />
+            </a>
+
+            <div className="space-y-2.5">
+              {responsibilities.map((r, i) => (
+                <motion.div
+                  key={r}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, ease, delay: 0.2 + i * 0.05 }}
+                  className="flex items-start gap-3"
+                >
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                  <span className="text-sm text-ink-soft">{r}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Products built at SPS Labs */}
+        <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+          {products.map((p, i) => (
+            <motion.a
+              key={p.name}
+              href={p.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, ease, delay: i * 0.06 }}
+              className="group card-surface p-6 relative overflow-hidden"
+            >
+              <div
+                className="absolute -top-10 -right-10 w-28 h-28 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: p.glow }}
+              />
+              <div className="relative flex items-start justify-between mb-4">
+                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${p.accent} flex items-center justify-center shadow-lg`}>
+                  <p.icon size={20} className="text-white" />
+                </div>
+                <ArrowUpRight
+                  size={16}
+                  className="text-ink-dim group-hover:text-ink transition-colors"
+                />
+              </div>
+              <h4 className="font-display font-semibold text-ink text-lg mb-1">
+                {p.name}
+              </h4>
+              <p className="text-sm text-ink-soft leading-relaxed mb-3">
+                {p.tagline}
+              </p>
+              <div className="flex flex-wrap gap-1">
+                {p.technologies.slice(0, 3).map((t) => (
+                  <span
+                    key={t}
+                    className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-[11px] font-mono text-ink-dim"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.a>
           ))}
         </div>
-
-        {/* Stats Section */}
-        <div className={`mt-20 fade-in ${isVisible ? 'visible' : ''}`}>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { icon: Award, label: 'Companies Founded', value: '2' },
-              { icon: Users, label: 'Years Experience', value: '4+' },
-              { icon: Code, label: 'Projects Delivered', value: '50+' },
-              { icon: TrendingUp, label: 'Leadership Roles', value: '2' },
-            ].map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`text-center p-6 glass rounded-lg hover-lift smooth-transition fade-in ${isVisible ? 'visible' : ''}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <stat.icon size={20} className="text-white" />
-                </div>
-                <div className="text-2xl font-bold gradient-text mb-2">{stat.value}</div>
-                <div className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
-    </section>
+    </Section>
   );
-};
-
-export default Experience;
+}
