@@ -35,7 +35,7 @@ export function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className={`max-w-2xl ${alignment} mb-14`}
+      className={`max-w-2xl ${alignment} mb-14 gpu`}
     >
       {eyebrow && (
         <div

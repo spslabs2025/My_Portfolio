@@ -14,7 +14,7 @@ export default function Philosophy() {
           transition={{ duration: 0.8, ease }}
           className="absolute inset-0 -z-10 flex items-center justify-center"
         >
-          <div className="w-[60%] h-[60%] rounded-full blur-[120px] bg-gradient-to-br from-accent/15 to-accent-2/10" />
+          <div className="w-[60%] h-[60%] rounded-full blur-soft bg-gradient-to-br from-accent/15 to-accent-2/10 gpu" />
         </motion.div>
 
         <motion.div

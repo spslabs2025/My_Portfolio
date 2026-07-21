@@ -14,13 +14,13 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease }}
-          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] rounded-full blur-[120px] bg-gradient-to-br from-accent/20 via-accent-2/15 to-transparent"
+          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] rounded-full blur-soft bg-gradient-to-br from-accent/20 via-accent-2/15 to-transparent gpu"
         />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.6, delay: 0.3 }}
-          className="absolute bottom-0 right-[-10%] w-[50%] h-[40%] rounded-full blur-[120px] bg-gradient-to-tl from-accent-2/15 to-transparent"
+          className="absolute bottom-0 right-[-10%] w-[50%] h-[40%] rounded-full blur-soft bg-gradient-to-tl from-accent-2/15 to-transparent gpu"
         />
       </div>
 
@@ -33,7 +33,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 glass rounded-full pl-2 pr-3.5 py-1.5 mb-8"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-pulse-soft" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
           </span>
           <span className="text-xs font-mono text-ink-soft tracking-wide">
@@ -130,7 +130,7 @@ export default function Hero() {
                 className="group relative card-surface p-5 overflow-hidden"
               >
                 <div
-                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-softer opacity-0 group-hover:opacity-100 transition-opacity duration-500 gpu"
                   style={{ background: p.glow }}
                 />
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${p.accent} flex items-center justify-center mb-4 shadow-lg`}>

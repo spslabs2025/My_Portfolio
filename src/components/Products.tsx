@@ -33,8 +33,8 @@ export default function Products() {
             {/* Header banner */}
             <div className={`relative h-36 bg-gradient-to-br ${p.accent} overflow-hidden`}>
               <div className="absolute inset-0 opacity-30">
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-2xl animate-float" />
-                <div className="absolute -bottom-12 -left-8 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-float-slow" />
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-softer animate-float gpu" />
+                <div className="absolute -bottom-12 -left-8 w-32 h-32 bg-white/10 rounded-full blur-softer animate-float-slow gpu" />
               </div>
               <div className="relative h-full flex items-center justify-between px-7">
                 <div className="flex items-center gap-4">

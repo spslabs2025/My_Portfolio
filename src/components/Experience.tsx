@@ -38,7 +38,7 @@ export default function Experience() {
           transition={{ duration: 0.7, ease }}
           className="lg:col-span-5 card-surface p-8 relative overflow-hidden"
         >
-          <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full blur-3xl bg-accent/15" />
+          <div className="absolute -top-20 -right-20 w-48 h-48 rounded-full blur-softer bg-accent/15 gpu" />
           <div className="relative">
             <div className="flex items-center gap-2 mb-3">
               <span className="px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-bg text-xs font-semibold font-mono">
@@ -93,7 +93,7 @@ export default function Experience() {
               className="group card-surface p-6 relative overflow-hidden"
             >
               <div
-                className="absolute -top-10 -right-10 w-28 h-28 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute -top-10 -right-10 w-28 h-28 rounded-full blur-softer opacity-0 group-hover:opacity-100 transition-opacity duration-500 gpu"
                 style={{ background: p.glow }}
               />
               <div className="relative flex items-start justify-between mb-4">
