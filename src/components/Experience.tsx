@@ -47,47 +47,6 @@ const Experience: React.FC = () => {
         'Containerized and deployed services using Docker on AWS EC2; implemented CI/CD pipelines to automate builds, tests, and deployments.'
       ]
     },
-    {
-      title: 'Full Stack Developer',
-      company: 'Spelll',
-      period: 'Jan 2023 – Dec 2024',
-      location: 'Remote',
-      type: 'developer',
-      description: [
-        'Developed and deployed 50+ full-stack applications using modern technologies',
-        'Built responsive frontends, RESTful APIs, and scalable backend systems',
-        'Optimized database performance and integrated third-party services',
-        'Collaborated with cross-functional teams to deliver user-focused solutions'
-      ]
-    },
-    {
-      title: 'Founder & Backend Developer',
-      company: 'SPS Creators',
-      period: 'Jan 2022 – Dec 2022',
-      location: 'Remote',
-      type: 'founder',
-      description: [
-        'Founded SPSCreators, delivering Django backend solutions for academic projects',
-        'Designed and developed RESTful APIs and database models using Django and Python',
-        'Built scalable backend systems with focus on clean code and efficient architecture',
-        'Helped 100+ students with their academic projects and technical challenges'
-      ]
-    },
-    {
-      title: 'Senior Developer',
-      company: 'SGN Designer',
-      period: 'Apr 2020 – Dec 2021',
-      location: 'Remote',
-      type: 'senior',
-      description: [
-        'Led the development of full-stack projects using React.js, Django, Flutter, and Python',
-        'Designed and implemented scalable web and mobile applications',
-        'Architected backend services with REST APIs, authentication systems, and database management',
-        'Improved code quality through peer reviews, testing, and clean architecture practices',
-        'Mentored junior developers and collaborated with cross-functional teams',
-        'Ensured on-time delivery of high-quality products following Agile methodologies'
-      ]
-    }
   ];
 
   return (
