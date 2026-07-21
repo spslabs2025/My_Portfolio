@@ -45,6 +45,10 @@
     /* GPU compositing hint for the whole page */
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    /* Prevent scroll-chaining: page scroll never propagates to ancestors */
+    overscroll-behavior: none;
+    /* Let the browser handle panning without waiting for the main thread */
+    touch-action: pan-y;
   }
 
   /* Promote animated/scrolling elements to their own GPU layer */

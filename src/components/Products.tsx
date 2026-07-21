@@ -36,16 +36,16 @@ export default function Products() {
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-softer animate-float gpu" />
                 <div className="absolute -bottom-12 -left-8 w-32 h-32 bg-white/10 rounded-full blur-softer animate-float-slow gpu" />
               </div>
-              <div className="relative h-full flex items-center justify-between px-7">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center ring-1 ring-white/25">
-                    <p.icon size={26} className="text-white" />
+              <div className="relative h-full flex items-center px-5 sm:px-7">
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center ring-1 ring-white/25 flex-shrink-0">
+                    <p.icon size={22} className="text-white sm:text-[26px]" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-display font-semibold text-white drop-shadow-sm">
+                  <div className="min-w-0">
+                    <h3 className="text-xl sm:text-2xl font-display font-semibold text-white drop-shadow-sm truncate">
                       {p.name}
                     </h3>
-                    <p className="text-white/90 text-sm font-medium max-w-xs leading-snug">
+                    <p className="text-white/90 text-xs sm:text-sm font-medium leading-snug line-clamp-2">
                       {p.tagline}
                     </p>
                   </div>
@@ -54,7 +54,7 @@ export default function Products() {
             </div>
 
             {/* Body */}
-            <div className="p-7">
+            <div className="p-5 sm:p-7">
               {/* Problem / Solution */}
               <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 <div>

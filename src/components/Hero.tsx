@@ -6,7 +6,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-16">
+    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-28 pb-16">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 grid-bg radial-fade opacity-60" />
@@ -46,7 +46,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease, delay: 0.15 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight leading-[0.95] text-balance max-w-5xl"
+          className="text-[2.75rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl font-display font-semibold tracking-tight text-balance max-w-5xl"
         >
           I build software
           <br />
@@ -168,6 +168,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          className="gpu"
         >
           <ArrowDown size={14} />
         </motion.div>
